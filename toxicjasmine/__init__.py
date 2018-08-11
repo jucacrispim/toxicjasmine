@@ -167,7 +167,8 @@ class ToxicjasmineCommand(Command):
     def _load_config(self, custom_config_path):
         config_file, project_path = self._config_paths(custom_config_path)
         return ToxicjasmineConfig(config_file, project_path=project_path,
-                                  theme=self._args.theme)
+                                  theme=self._args.theme,
+                                  options=self._args.options)
 
 
 class ToxicjasmineFile(object):
