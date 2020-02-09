@@ -189,9 +189,37 @@ class ToxicjasmineFile(object):
         )
 
 
+class ToxicJasmineCIRunner(CIRunner):
+
+    def _get_browser(self, browser):
+        driver = browser if browser \
+            else os.environ.get('JASMINE_BROWSER', 'firefox')
+        options = self.jasmine_config.browser_options
+        browser_opts = [o for o in options.split(',')] if options else []
+        try:
+            webdriver = __import__(
+                "selenium.webdriver.{0}.webdriver".format(driver),
+                globals(), locals(), ['object'], 0
+            )
+            options = webdriver.Options()
+            for option in browser_opts:
+                options.add_argument('--{}'.format(option))
+
+            if driver == 'chrome':
+                kw = {'chrome_options': options}
+            elif driver == 'firefox':
+                kw = {'firefox_options': options}
+            else:
+                kw = {}
+
+            return webdriver.WebDriver(**kw)
+        except ImportError:
+            print("Browser {0} not found".format(driver))
+
+
 def begin():
 
-    cmd = ToxicjasmineCommand(ToxicjasmineApp, CIRunner)
+    cmd = ToxicjasmineCommand(ToxicjasmineApp, ToxicJasmineCIRunner)
 
     if 'python' in sys.argv or 'python3' in sys.argv:
         args = sys.argv[2:]
