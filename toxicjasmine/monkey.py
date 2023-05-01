@@ -16,6 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with toxicjasmine. If not, see <http://www.gnu.org/licenses/>.
 
+from yaml import load, Loader
 
 class MonkeyPatcher:
 
