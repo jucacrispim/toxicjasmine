@@ -28,6 +28,12 @@ from jasmine.entry_points import Command
 from jasmine.standalone import JasmineApp
 from jasmine.ci import CIRunner, TestServerThread
 
+from toxicjasmine.monkey import MonkeyPatcher
+
+monkey = MonkeyPatcher()
+monkey.patch_all()
+
+
 
 class ToxicjasmineApp(JasmineApp):
 
@@ -230,7 +236,4 @@ def begin():
 
 
 if __name__ == '__main__':
-    from .monkey import MonkeyPatcher
-    monkey = MonkeyPatcher()
-    monkey.patch_all()
     begin()
