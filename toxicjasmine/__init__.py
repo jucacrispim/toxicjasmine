@@ -230,4 +230,7 @@ def begin():
 
 
 if __name__ == '__main__':
+    from .monkey import MonkeyPatcher
+    monkey = MonkeyPatcher()
+    monkey.patch_all()
     begin()
