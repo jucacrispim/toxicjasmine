@@ -211,12 +211,7 @@ class ToxicJasmineCIRunner(CIRunner):
             for option in browser_opts:
                 options.add_argument('--{}'.format(option))
 
-            if driver == 'chrome':
-                kw = {'chrome_options': options}
-            elif driver == 'firefox':
-                kw = {'firefox_options': options}
-            else:
-                kw = {}
+            kw = {'options': options}
 
             return webdriver.WebDriver(**kw)
         except ImportError:
