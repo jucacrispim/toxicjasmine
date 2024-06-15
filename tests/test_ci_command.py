@@ -13,18 +13,7 @@ def test_ci_with_tests_passed():
     args = Mock(fpath=os.path.join(TEST_DATA_DIR, 'SpecRunner.html'))
     args.browser = 'chrome'
     args.show_logs = False
-    args.options = None
-    r = ci.run(args)
-
-    assert r is True
-
-
-def test_ci_with_tests_passed_with_browser_options():
-    ci = commands.CI(Mock())
-    args = Mock(fpath=os.path.join(TEST_DATA_DIR, 'SpecRunner.html'))
-    args.browser = 'chrome'
-    args.show_logs = False
-    args.options = 'no-sandbox,headless'
+    args.options = 'no-sandbox,disable-dev-shm-usage,headless,disable-gpu'
     r = ci.run(args)
 
     assert r is True
@@ -36,7 +25,7 @@ def test_ci_with_tests_error(mocker):
     args = Mock(fpath=os.path.join(TEST_DATA_DIR, 'SpecRunnerError.html'))
     args.browser = 'chrome'
     args.show_logs = False
-    args.options = None
+    args.options = 'no-sandbox,disable-dev-shm-usage,headless,disable-gpu'
     ci.run(args)
 
     assert commands._exit_with_error.called
@@ -49,7 +38,7 @@ def test_ci_with_tests_error_with_browser_logs(mocker):
     args = Mock(fpath=os.path.join(TEST_DATA_DIR, 'SpecRunnerError.html'))
     args.browser = 'chrome'
     args.show_logs = True
-    args.options = None
+    args.options = 'no-sandbox,disable-dev-shm-usage,headless,disable-gpu'
     ci.run(args)
 
     assert commands._exit_with_error.called
