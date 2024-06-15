@@ -1,0 +1,14 @@
+language: python
+versions:
+  - '3.11'
+
+system_packages:
+  - chromium-driver
+  - firefox
+  - xvfb
+  - pmisc
+
+steps:
+
+  - name: Run tests
+    command: ./scripts/run_tests.sh
