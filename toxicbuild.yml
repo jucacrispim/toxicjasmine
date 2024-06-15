@@ -6,8 +6,12 @@ system_packages:
   - chromium-driver
   - xvfb
   - psmisc
+  - curl
 
 steps:
 
   - name: Run tests
     command: ./scripts/run_tests.sh
+
+  - name: Relese
+    command: ./scripts/release.sh
