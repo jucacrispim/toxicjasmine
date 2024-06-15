@@ -4,7 +4,7 @@ versions:
 
 system_packages:
   - chromium-driver
-  - geckodriver
+  - firefox-geckodriver
   - xvfb
   - pmisc
 
