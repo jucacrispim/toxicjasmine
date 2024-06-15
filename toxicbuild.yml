@@ -4,9 +4,8 @@ versions:
 
 system_packages:
   - chromium-driver
-  - firefox-geckodriver
   - xvfb
-  - pmisc
+  - psmisc
 
 steps:
 
