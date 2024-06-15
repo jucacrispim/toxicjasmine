@@ -33,11 +33,11 @@ classifiers = [
 
 [tool.setuptools.packages.find]
 where = ["."]
-exclude = ["tests*"]
-include = ["toxicwebui"]
+exclude = ["tests*", "testdata*"]
+include = ["toxicjasmine"]
 
 [tool.setuptools.dynamic]
-version = {attr = "toxicwebui.__version__"}
+version = {attr = "toxicjasmine.__version__"}
 
 [project.scripts]
-toxicwebui = "toxicwebui.cmds:main"
+toxicjasmine = "toxicjasmine:main"

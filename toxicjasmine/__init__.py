@@ -20,6 +20,8 @@
 
 from toxicjasmine.commands import Command
 
+__version__ = '0.3.0'
+
 
 def main():
     cmd = Command()
